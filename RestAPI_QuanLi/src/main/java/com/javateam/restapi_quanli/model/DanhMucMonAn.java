@@ -29,10 +29,10 @@ public class DanhMucMonAn {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int ID;
+    private int ID;
 
     @Column(name = "TenDanhMuc")
-    String TenDanhMuc;
+    private String TenDanhMuc;
     
     
     public DanhMucMonAn() {

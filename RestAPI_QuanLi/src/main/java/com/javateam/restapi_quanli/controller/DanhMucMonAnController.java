@@ -26,9 +26,9 @@ public class DanhMucMonAnController {
     DanhMucMonAnService danhmucmonanService;
 
     @RequestMapping(value = "/getAllDanhMuc", method = RequestMethod.GET, headers = "Accept=application/json")
-    public List getCountries() {
+    public List getDanhMucMonAn() {
 
-        List listOfCountries = danhmucmonanService.getAllCountries();
+        List listOfCountries = danhmucmonanService.getAllDanhMucMonAn();
         return listOfCountries;
     }
 

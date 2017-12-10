@@ -8,7 +8,7 @@
   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
  
  <annotation-driven />
- 
+  <context:component-scan base-package="com.javateam.restapi_quanli" />
 <!-- <resources mapping="/resources/**" location="/resources/" />-->
  
  <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
@@ -28,6 +28,7 @@
   <beans:property name="annotatedClasses">
    <beans:list>
     <beans:value>com.javateam.restapi_quanli.model.DanhMucMonAn</beans:value>
+    <beans:value>com.javateam.restapi_quanli.model.ChiNhanh</beans:value>
    </beans:list>
   </beans:property>
   
@@ -40,7 +41,7 @@
   </beans:property>
  </beans:bean>
  
- <context:component-scan base-package="com.javateam.restapi_quanli" />
+
  
  <tx:annotation-driven transaction-manager="transactionManager"/>
  

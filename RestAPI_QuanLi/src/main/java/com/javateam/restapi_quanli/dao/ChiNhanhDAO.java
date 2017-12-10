@@ -5,6 +5,7 @@
  */
 package com.javateam.restapi_quanli.dao;
 
+import com.javateam.restapi_quanli.model.ChiNhanh;
 import com.javateam.restapi_quanli.model.DanhMucMonAn;
 import java.util.List;
 import org.hibernate.Session;
@@ -17,43 +18,43 @@ import org.springframework.stereotype.Repository;
  * @author TheKiet
  */
 @Repository
-public class DanhMucMonAnDAO {
- 
- @Autowired
- private SessionFactory sessionFactory;
- 
- public void setSessionFactory(SessionFactory sf) {
-  this.sessionFactory = sf;
- }
- 
-    public List getAllDanhMucMonAn() {
-        Session session = this.sessionFactory.getCurrentSession();
-        List danhmucmonan = session.createQuery("from DanhMucMonAn").list();
-        return danhmucmonan;
+public class ChiNhanhDAO {
+
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    public void setSessionFactory(SessionFactory sf) {
+        this.sessionFactory = sf;
     }
 
-    public DanhMucMonAn getDanhMucMonAn(int id) {
+    public List getAllChiNhanh() {
         Session session = this.sessionFactory.getCurrentSession();
-        DanhMucMonAn danhmucmonan = (DanhMucMonAn) session.get(DanhMucMonAn.class, new Integer(id));
-        return danhmucmonan;
+        List chinhanh = session.createQuery("from ChiNhanh").list();
+        return chinhanh;
     }
 
-    public DanhMucMonAn addDanhMucMonAn(DanhMucMonAn danhmucmonan) {
+    public ChiNhanh getChiNhanhByID(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(danhmucmonan);
-        return danhmucmonan;
+        ChiNhanh chinhanh = (ChiNhanh) session.get(ChiNhanh.class, new Integer(id));
+        return chinhanh;
     }
 
-    public void updateDanhMucMonAn(DanhMucMonAn danhmucmonan) {
+    public ChiNhanh addChiNhanh(ChiNhanh chinhanh) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.update(danhmucmonan);
+        session.persist(chinhanh);
+        return chinhanh;
     }
 
-    public void deleteDanhMucMonAn(int id) {
+    public void updateChiNhanh(ChiNhanh chinhanh) {
         Session session = this.sessionFactory.getCurrentSession();
-        DanhMucMonAn p = (DanhMucMonAn) session.load(DanhMucMonAn.class, new Integer(id));
+        session.update(chinhanh);
+    }
+
+    public void deleteChiNhanhByID(int id) {
+        Session session = this.sessionFactory.getCurrentSession();
+        ChiNhanh p = (ChiNhanh) session.load(ChiNhanh.class, new Integer(id));
         if (null != p) {
             session.delete(p);
         }
-    } 
+    }
 }

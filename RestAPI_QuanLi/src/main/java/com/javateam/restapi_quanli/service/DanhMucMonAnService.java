@@ -20,31 +20,31 @@ import org.springframework.stereotype.Service;
 public class DanhMucMonAnService {
  
  @Autowired
- DanhMucMonAnDAO danhmucmonanDao;
+ DanhMucMonAnDAO danhmucmonanDAO;
  
  @Transactional
- public List getAllCountries() {
-  return danhmucmonanDao.getAllCountries();
+ public List getAllDanhMucMonAn() {
+  return danhmucmonanDAO.getAllDanhMucMonAn();
  }
  
  @Transactional
  public DanhMucMonAn getDanhMucMonAn(int id) {
-  return danhmucmonanDao.getDanhMucMonAn(id);
+  return danhmucmonanDAO.getDanhMucMonAn(id);
  }
  
  @Transactional
  public void addDanhMucMonAn(DanhMucMonAn danhmucmonan) {
-  danhmucmonanDao.addDanhMucMonAn(danhmucmonan);
+  danhmucmonanDAO.addDanhMucMonAn(danhmucmonan);
  }
  
  @Transactional
  public void updateDanhMucMonAn(DanhMucMonAn danhmucmonan) {
-  danhmucmonanDao.updateDanhMucMonAn(danhmucmonan);
+  danhmucmonanDAO.updateDanhMucMonAn(danhmucmonan);
  
  }
  
  @Transactional
  public void deleteDanhMucMonAn(int id) {
-  danhmucmonanDao.deleteDanhMucMonAn(id);
+  danhmucmonanDAO.deleteDanhMucMonAn(id);
  }
 }
