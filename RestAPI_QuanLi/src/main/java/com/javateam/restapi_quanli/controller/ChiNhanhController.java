@@ -26,18 +26,24 @@ public class ChiNhanhController {
     @Autowired
     ChiNhanhService chinhanhService;
 
-    @RequestMapping(value = "/getAllChiNhanh", method = RequestMethod.GET, headers = "Accept=application/json")
+    @RequestMapping(value = "/getAllChiNhanh",produces = "application/json;charset=UTF-8", method = RequestMethod.GET, headers = "Accept=application/json")
     public List getAllChiNhanh() {
 
         List listofChiNhanh = chinhanhService.getAllChiNhanh();
         return listofChiNhanh;
     }
 
-    @RequestMapping(value = "/getChiNhanh/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
+    @RequestMapping(value = "/getChiNhanh/{id}", method = RequestMethod.GET,produces = "application/json;charset=UTF-8", headers = "Accept=application/json")
     public ChiNhanh getChiNhanhByID(@PathVariable int id) {
         return chinhanhService.getChiNhanhByID(id);
     }
 
+    @RequestMapping(value = "/getChiNhanh/Search/{name}", method = RequestMethod.GET,produces = "application/json;charset=UTF-8", headers = "Accept=application/json")
+    public List getChiNhanhByID(@PathVariable String name) {
+        String name1 = name;
+        return chinhanhService.getChiNhanhByName(name);
+    }
+    
     @RequestMapping(value = "/addChiNhanh", method = RequestMethod.POST, headers = "Accept=application/json")
     public ChiNhanh addChiNhanh(@RequestBody ChiNhanh chinhanh) {
         ChiNhanh tmp =  chinhanhService.addChiNhanh(chinhanh);

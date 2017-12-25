@@ -49,4 +49,9 @@ public class ChiNhanhService {
     public void deleteChiNhanhByID(int id) {
         chinhanhDAO.deleteChiNhanhByID(id);
     }
+    
+     @Transactional
+    public List getChiNhanhByName(String name) {
+        return chinhanhDAO.getChiNhanhByName(name);
+    }
 }
