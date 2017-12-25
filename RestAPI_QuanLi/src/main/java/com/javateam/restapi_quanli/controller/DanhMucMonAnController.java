@@ -37,7 +37,7 @@ public class DanhMucMonAnController {
         return danhmucmonanService.getDanhMucMonAn(id);
     }
 
-    @RequestMapping(value = "/addDanhMuc", method = RequestMethod.POST, headers = "Accept=application/json")
+    @RequestMapping(value = "/addDanhMuc", method = RequestMethod.POST)
     public void addDanhMucMonAn(@RequestBody DanhMucMonAn danhmucmonan) {
         danhmucmonanService.addDanhMucMonAn(danhmucmonan);
 
