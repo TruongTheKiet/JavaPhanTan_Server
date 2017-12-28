@@ -8,7 +8,9 @@ package com.javateam.restapi_quanli.controller;
 import com.javateam.restapi_quanli.model.Menu;
 import com.javateam.restapi_quanli.model.MonAn;
 import com.javateam.restapi_quanli.service.MenuService;
+import java.util.LinkedHashMap;
 import java.util.List;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,9 +47,14 @@ public class MenuController {
     }
 
     @RequestMapping(value = "/addMenu", method = RequestMethod.POST)
-    public Menu addMenu(@RequestBody Menu menu) {
-        Menu tmp = menuService.addMemu(menu);
-        return tmp;
+    public void addMenu(@RequestBody Object data) {
+       LinkedHashMap map = (LinkedHashMap) data;
+       String list_id_monan = (String)map.get("list_id_monan");
+       int id_branch = (int)map.get("id_branch");
+        String[] id_monans = list_id_monan.split(",");
+        for (int i = 0; i < id_monans.length; i++) {
+            menuService.addMemu(new Menu(0,id_branch, Integer.parseInt(id_monans[i])));
+        }
     }
 
     @RequestMapping(value = "/updateMenu", method = RequestMethod.PUT, headers = "Accept=application/json")

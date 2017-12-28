@@ -29,12 +29,12 @@ public class Menu {
     @Column(name = "ID_ChiNhanh")
     private int ID_ChiNhanh;
     @Column(name = "ID_MonAn")
-    private String ID_MonAn;
+    private int ID_MonAn;
 
     public Menu() {
     }
 
-    public Menu(int ID, int ID_ChiNhanh, String ID_MonAn) {
+    public Menu(int ID, int ID_ChiNhanh, int ID_MonAn) {
         this.ID = ID;
         this.ID_ChiNhanh = ID_ChiNhanh;
         this.ID_MonAn = ID_MonAn;
@@ -56,11 +56,11 @@ public class Menu {
         this.ID_ChiNhanh = ID_ChiNhanh;
     }
 
-    public String getID_MonAn() {
+    public int getID_MonAn() {
         return ID_MonAn;
     }
 
-    public void setID_MonAn(String ID_MonAn) {
+    public void setID_MonAn(int ID_MonAn) {
         this.ID_MonAn = ID_MonAn;
     }
     
