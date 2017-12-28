@@ -29,6 +29,8 @@
    <beans:list>
     <beans:value>com.javateam.restapi_quanli.model.DanhMucMonAn</beans:value>
     <beans:value>com.javateam.restapi_quanli.model.ChiNhanh</beans:value>
+    <beans:value>com.javateam.restapi_quanli.model.MonAn</beans:value>
+    <beans:value>com.javateam.restapi_quanli.model.Menu</beans:value>
    </beans:list>
   </beans:property>
   
