@@ -52,4 +52,9 @@ public class MenuService {
     public List getMemuByName(String name) {
         return menuDAO.getMenuByName(name);
     }
+     @Transactional
+    public List getMenuByIDBranch(int id_branch) {
+        return menuDAO.getMenuByIDBranch(id_branch);
+    }
+    
 }

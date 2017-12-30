@@ -48,7 +48,16 @@ public class MenuDAO {
         return query.list();
 
     }
+    
+    public List getMenuByIDBranch(int id_branch) {
+        Session session = this.sessionFactory.getCurrentSession();
+        String hql = "from Menu mn where mn.ID_ChiNhanh = :id_branch";
+        Query query = session.createQuery(hql);
+        query.setInteger("id_branch", id_branch);
+        return query.list();
 
+    }
+    
     public Menu addMenu(Menu menu) {
         Session session = this.sessionFactory.getCurrentSession();
         session.persist(menu);
@@ -66,5 +75,6 @@ public class MenuDAO {
         Query query = session.createQuery(hql);
         query.setInteger("id_branch", id_branch);
         query.setInteger("id_monan", id_monan);
+        query.executeUpdate();
     }
 }

@@ -50,9 +50,10 @@ public class MenuController {
     public void addMenu(@RequestBody Object data) {
        LinkedHashMap map = (LinkedHashMap) data;
        String list_id_monan = (String)map.get("list_id_monan");
-       int id_branch = (int)map.get("id_branch");
+       int id_branch = Integer.parseInt(map.get("id_branch").toString());
         String[] id_monans = list_id_monan.split(",");
         for (int i = 0; i < id_monans.length; i++) {
+            if(id_monans[i].compareTo("") != 0 )
             menuService.addMemu(new Menu(0,id_branch, Integer.parseInt(id_monans[i])));
         }
     }
@@ -62,11 +63,18 @@ public class MenuController {
         menuService.updateMemu(menu);
     }
 
-    @RequestMapping(value = "/deleteMenu/{id_branch}/{list_id_monan", method = RequestMethod.DELETE, headers = "Accept=application/json")
+    @RequestMapping(value = "/deleteMenu/{id_branch}/{list_id_monan}", method = RequestMethod.DELETE, headers = "Accept=application/json")
     public void deleteMenu(@PathVariable("id_branch") int id_branch, @PathVariable("list_id_monan") String list_id_monan) {
         String[] id_monans = list_id_monan.split(",");
         for (int i = 0; i < id_monans.length; i++) {
-            menuService.deleteMenuByIDBranchIDMonAn(id_branch, Integer.parseInt(id_monans[i]));
+            int idmonan = Integer.parseInt(id_monans[i]);
+            menuService.deleteMenuByIDBranchIDMonAn(id_branch,idmonan );
         }
+    }
+    @RequestMapping(value = "/getMenuBranch/{id_branch}", method = RequestMethod.GET, headers = "Accept=application/json")
+    public List getMenuByBranch(@PathVariable("id_branch") int id_branch) {
+        int id = id_branch;
+       return menuService.getMenuByIDBranch(id);
+        
     }
 }
