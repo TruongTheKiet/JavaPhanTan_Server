@@ -30,4 +30,24 @@ public class CallProcedureService {
     public List getDoanhThuTuanThang(int id_branch, String date_from, String date_to) {
         return procedureDAO.getDoanhThuTuanThang(id_branch, date_from, date_to);
     }
+    
+     @Transactional
+    public List getDoanhThuNam(int id_branch, String date_from, String date_to) {
+        return procedureDAO.getDoanhThuNam(id_branch, date_from, date_to);
+    }
+    
+    @Transactional
+    public List getChiPhiNgay(int id_branch, String date_from, String date_to) {
+        return procedureDAO.getChiPhiNgay(id_branch, date_from, date_to);
+    }
+    
+    @Transactional
+    public List getChiPhiTuanThang(int id_branch, String date_from, String date_to) {
+        return procedureDAO.getChiPhiTuanThang(id_branch, date_from, date_to);
+    }
+    
+     @Transactional
+    public List getChiPhiNam(int id_branch, String date_from, String date_to) {
+        return procedureDAO.getChiPhiNam(id_branch, date_from, date_to);
+    }
 }

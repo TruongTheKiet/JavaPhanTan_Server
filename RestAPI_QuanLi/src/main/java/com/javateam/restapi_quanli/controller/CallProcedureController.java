@@ -47,4 +47,54 @@ public class CallProcedureController {
         List result = procedureService.getDoanhThuTuanThang(id_branch, date_from, date_to);
         return result;
     }
+    
+    @RequestMapping(value = "/getDoanhThuNam", produces = "application/json;charset=UTF-8", method = RequestMethod.POST, headers = "Accept=application/json")
+    public List getDoanhThuNam(@RequestBody Object data) {
+
+        LinkedHashMap map = (LinkedHashMap) data;
+        String date_from = (String) map.get("date_from");
+        String date_to = (String) map.get("date_to");
+        int id_branch = Integer.parseInt(map.get("id_branch").toString());
+        
+        List result = procedureService.getDoanhThuNam(id_branch, date_from, date_to);
+        return result;
+    }
+    
+    /*Chi phí*/
+    
+    @RequestMapping(value = "/getChiPhiNam", produces = "application/json;charset=UTF-8", method = RequestMethod.POST, headers = "Accept=application/json")
+    public List getChiPhiNam(@RequestBody Object data) {
+
+        LinkedHashMap map = (LinkedHashMap) data;
+        String date_from = (String) map.get("date_from");
+        String date_to = (String) map.get("date_to");
+        int id_branch = Integer.parseInt(map.get("id_branch").toString());
+        
+        List result = procedureService.getChiPhiNam(id_branch, date_from, date_to);
+        return result;
+    }
+    
+    @RequestMapping(value = "/getChiPhiNgay", produces = "application/json;charset=UTF-8", method = RequestMethod.POST, headers = "Accept=application/json")
+    public List getChiPhiNgay(@RequestBody Object data) {
+
+        LinkedHashMap map = (LinkedHashMap) data;
+        String date_from = (String) map.get("date_from");
+        String date_to = (String) map.get("date_to");
+        int id_branch = Integer.parseInt(map.get("id_branch").toString());
+        
+        List result = procedureService.getChiPhiNgay(id_branch, date_from, date_to);
+        return result;
+    }
+    
+    @RequestMapping(value = "/getChiPhiTuanThang", produces = "application/json;charset=UTF-8", method = RequestMethod.POST, headers = "Accept=application/json")
+    public List getChiPhiTuanThang(@RequestBody Object data) {
+
+        LinkedHashMap map = (LinkedHashMap) data;
+        String date_from = (String) map.get("date_from");
+        String date_to = (String) map.get("date_to");
+        int id_branch = Integer.parseInt(map.get("id_branch").toString());
+        
+        List result = procedureService.getChiPhiTuanThang(id_branch, date_from, date_to);
+        return result;
+    }
 }
