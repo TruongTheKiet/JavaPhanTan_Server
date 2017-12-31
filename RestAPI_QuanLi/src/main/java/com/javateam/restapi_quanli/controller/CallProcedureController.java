@@ -28,10 +28,23 @@ public class CallProcedureController {
     public List getDanhThuNgay(@RequestBody Object data) {
 
         LinkedHashMap map = (LinkedHashMap) data;
-        String date_order = (String) map.get("date_order");
+        String date_from = (String) map.get("date_from");
+        String date_to = (String) map.get("date_to");
         int id_branch = Integer.parseInt(map.get("id_branch").toString());
+        
+        List result = procedureService.getDoanhThuNgay(id_branch, date_from, date_to);
+        return result;
+    }
+    
+    @RequestMapping(value = "/getDoanhThuTuanThang", produces = "application/json;charset=UTF-8", method = RequestMethod.POST, headers = "Accept=application/json")
+    public List getDoanhThuTuanThang(@RequestBody Object data) {
 
-        List result = procedureService.getDoanhThuNgay(id_branch, date_order);
+        LinkedHashMap map = (LinkedHashMap) data;
+        String date_from = (String) map.get("date_from");
+        String date_to = (String) map.get("date_to");
+        int id_branch = Integer.parseInt(map.get("id_branch").toString());
+        
+        List result = procedureService.getDoanhThuTuanThang(id_branch, date_from, date_to);
         return result;
     }
 }

@@ -22,7 +22,12 @@ public class CallProcedureService {
     CallProcedureDAO procedureDAO;
 
     @Transactional
-    public List getDoanhThuNgay(int id_branch, String date_order) {
-        return procedureDAO.getDoanhThuNgay(id_branch, date_order);
+    public List getDoanhThuNgay(int id_branch, String date_from, String date_to) {
+        return procedureDAO.getDoanhThuNgay(id_branch, date_from, date_to);
+    }
+    
+    @Transactional
+    public List getDoanhThuTuanThang(int id_branch, String date_from, String date_to) {
+        return procedureDAO.getDoanhThuTuanThang(id_branch, date_from, date_to);
     }
 }
