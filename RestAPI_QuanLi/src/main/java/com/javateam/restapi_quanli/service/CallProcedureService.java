@@ -50,4 +50,19 @@ public class CallProcedureService {
     public List getChiPhiNam(int id_branch, String date_from, String date_to) {
         return procedureDAO.getChiPhiNam(id_branch, date_from, date_to);
     }
+    
+         @Transactional
+    public List getNewCustomer(int nam) {
+        return procedureDAO.getNewCustomer(nam);
+    }
+    
+    @Transactional
+    public List getActivityCustomer(int search_all, String thang, String nam, String phone) {
+        return procedureDAO.getActivityCustomer(search_all, thang, nam, phone);
+    }
+    
+    @Transactional
+    public List getDishesMonth(int id_branch, String thang, String nam) {
+        return procedureDAO.getDishesMonth(id_branch, thang, nam);
+    }
 }

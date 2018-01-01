@@ -9,6 +9,7 @@ import com.javateam.restapi_quanli.service.CallProcedureService;
 import java.util.LinkedHashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -95,6 +96,30 @@ public class CallProcedureController {
         int id_branch = Integer.parseInt(map.get("id_branch").toString());
         
         List result = procedureService.getChiPhiTuanThang(id_branch, date_from, date_to);
+        return result;
+    }
+    
+    @RequestMapping(value = "/getNewCustomer/{nam}", produces = "application/json;charset=UTF-8", method = RequestMethod.GET, headers = "Accept=application/json")
+    public List getNewCustomer(@PathVariable int nam) {
+        List result = procedureService.getNewCustomer(nam);
+        return result;
+    }
+    @RequestMapping(value = "/getActivityCustomer", method = RequestMethod.POST)
+    public List getActivityCustomer(@RequestBody Object data) 
+    {
+        LinkedHashMap map = (LinkedHashMap) data;
+        String thang = (String) map.get("thang");
+        String nam = (String) map.get("nam");
+        String phone = (String)map.get("phone");
+        int search_all = Integer.parseInt(map.get("search_all").toString());
+        List result = procedureService.getActivityCustomer(search_all, thang, nam, phone);
+        return result;
+    }
+    
+        @RequestMapping(value = "/getDishesMonth/{id_branch}/{thang}/{nam}", produces = "application/json;charset=UTF-8", method = RequestMethod.GET, headers = "Accept=application/json")
+    public List getDishesMonth(@PathVariable String thang, @PathVariable String nam, @PathVariable int id_branch) 
+    {
+        List result = procedureService.getDishesMonth(id_branch, thang, nam);
         return result;
     }
 }

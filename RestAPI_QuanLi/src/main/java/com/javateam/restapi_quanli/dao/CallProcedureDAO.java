@@ -162,12 +162,10 @@ public class CallProcedureDAO {
             Object[] objects = (Object[]) results.get(i);
 
             Map<String, Object> item = new HashMap<String, Object>();
-            
+
             item.put("stt", objects[0]);
             item.put("time", objects[1]);
-            item.put("branch_name", objects[2]);
-            item.put("chiphi", objects[3]);
-            item.put("noidung", objects[4]);
+            item.put("chiphi", objects[2]);
             map.add(item);
         }
         return map;
@@ -175,7 +173,7 @@ public class CallProcedureDAO {
     }
 
     public List getChiPhiTuanThang(int id_branch, String date_from, String date_to) {
-       Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.getCurrentSession();
         ProcedureCall procedureCall = session.createStoredProcedureCall("sp_ChiPhiWeekMonth");
         procedureCall.registerParameter("id_branch", Integer.class, ParameterMode.IN);
         procedureCall.registerParameter("date_from", String.class, ParameterMode.IN);
@@ -195,12 +193,10 @@ public class CallProcedureDAO {
             Object[] objects = (Object[]) results.get(i);
 
             Map<String, Object> item = new HashMap<String, Object>();
-            
+
             item.put("stt", objects[0]);
             item.put("time", objects[1]);
-            item.put("branch_name", objects[2]);
-            item.put("chiphi", objects[3]);
-            item.put("noidung", objects[4]);
+            item.put("chiphi", objects[2]);
             map.add(item);
         }
         return map;
@@ -208,7 +204,7 @@ public class CallProcedureDAO {
     }
 
     public List getChiPhiNam(int id_branch, String date_from, String date_to) {
-              Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.getCurrentSession();
         ProcedureCall procedureCall = session.createStoredProcedureCall("sp_ChiPhiYear");
         procedureCall.registerParameter("id_branch", Integer.class, ParameterMode.IN);
         procedureCall.registerParameter("date_from", String.class, ParameterMode.IN);
@@ -228,15 +224,103 @@ public class CallProcedureDAO {
             Object[] objects = (Object[]) results.get(i);
 
             Map<String, Object> item = new HashMap<String, Object>();
-            
+
             item.put("stt", objects[0]);
             item.put("time", objects[1]);
-            item.put("branch_name", objects[2]);
-            item.put("chiphi", objects[3]);
-            item.put("noidung", objects[4]);
+            item.put("chiphi", objects[2]);
             map.add(item);
         }
         return map;
     }
 
+    public List getNewCustomer(int nam) {
+        Session session = this.sessionFactory.getCurrentSession();
+        ProcedureCall procedureCall = session.createStoredProcedureCall("sp_NewCustomer");
+        procedureCall.registerParameter("nam", Integer.class, ParameterMode.IN);
+
+        procedureCall.getParameterRegistration("nam").bindValue(nam);
+
+        ProcedureOutputs procedureOutputs = procedureCall.getOutputs();
+        ResultSetOutput resultSetOutput = (ResultSetOutput) procedureOutputs.getCurrent();
+
+        List results = resultSetOutput.getResultList();
+        List<Map<String, Object>> map = new ArrayList<Map<String, Object>>();
+        for (Integer i = 0; i < results.size(); i++) {
+
+            Object[] objects = (Object[]) results.get(i);
+
+            Map<String, Object> item = new HashMap<String, Object>();
+
+            item.put("thang", objects[0]);
+            item.put("soluong", objects[1]);
+            map.add(item);
+        }
+        return map;
+    }
+
+    public List getActivityCustomer(int search_all, String thang, String nam, String phone) {
+        Session session = this.sessionFactory.getCurrentSession();
+        ProcedureCall procedureCall = session.createStoredProcedureCall("sp_KhachHang");
+        procedureCall.registerParameter("search_all", Integer.class, ParameterMode.IN);
+        procedureCall.registerParameter("thang", String.class, ParameterMode.IN);
+        procedureCall.registerParameter("nam", String.class, ParameterMode.IN);
+        procedureCall.registerParameter("phone", String.class, ParameterMode.IN);
+        
+        procedureCall.getParameterRegistration("search_all").bindValue(search_all);
+        procedureCall.getParameterRegistration("thang").bindValue(thang);
+        procedureCall.getParameterRegistration("nam").bindValue(nam);
+        procedureCall.getParameterRegistration("phone").bindValue(phone);
+        
+        ProcedureOutputs procedureOutputs = procedureCall.getOutputs();
+        ResultSetOutput resultSetOutput = (ResultSetOutput) procedureOutputs.getCurrent();
+
+        List results = resultSetOutput.getResultList();
+        List<Map<String, Object>> map = new ArrayList<Map<String, Object>>();
+        for (Integer i = 0; i < results.size(); i++) {
+
+            Object[] objects = (Object[]) results.get(i);
+
+            Map<String, Object> item = new HashMap<String, Object>();
+
+            item.put("id", objects[1]);
+            item.put("tenkh", objects[2]);
+            item.put("tongtien", objects[3]);
+            item.put("soluongdh", objects[4]);
+            
+            map.add(item);
+        }
+        return map;
+    }
+    
+    public List getDishesMonth(int id_branch, String thang, String nam) {
+        Session session = this.sessionFactory.getCurrentSession();
+        ProcedureCall procedureCall = session.createStoredProcedureCall("sp_MonAnMonth");
+        procedureCall.registerParameter("id_branch", Integer.class, ParameterMode.IN);
+        procedureCall.registerParameter("thang", String.class, ParameterMode.IN);
+        procedureCall.registerParameter("nam", String.class, ParameterMode.IN);
+        
+        procedureCall.getParameterRegistration("id_branch").bindValue(id_branch);
+        procedureCall.getParameterRegistration("thang").bindValue(thang);
+        procedureCall.getParameterRegistration("nam").bindValue(nam);
+        
+        ProcedureOutputs procedureOutputs = procedureCall.getOutputs();
+        ResultSetOutput resultSetOutput = (ResultSetOutput) procedureOutputs.getCurrent();
+
+        List results = resultSetOutput.getResultList();
+        List<Map<String, Object>> map = new ArrayList<Map<String, Object>>();
+        for (Integer i = 0; i < results.size(); i++) {
+
+            Object[] objects = (Object[]) results.get(i);
+
+            Map<String, Object> item = new HashMap<String, Object>();
+
+            item.put("stt", objects[0]);
+            item.put("tenmonan", objects[1]);
+            item.put("tenchinhanh", objects[2]);
+            item.put("soluong", objects[3]);
+            
+            map.add(item);
+        }
+        return map;
+    }
 }
