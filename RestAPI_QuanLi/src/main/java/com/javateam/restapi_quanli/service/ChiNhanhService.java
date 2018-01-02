@@ -41,7 +41,7 @@ public class ChiNhanhService {
 
     @Transactional
     public void updateChiNhanh(ChiNhanh chinhanh) {
-        chinhanhDAO.addChiNhanh(chinhanh);
+        chinhanhDAO.updateChiNhanh(chinhanh);
 
     }
 
