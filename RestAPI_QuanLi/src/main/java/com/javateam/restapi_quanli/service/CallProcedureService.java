@@ -65,4 +65,20 @@ public class CallProcedureService {
     public List getDishesMonth(int id_branch, String thang, String nam) {
         return procedureDAO.getDishesMonth(id_branch, thang, nam);
     }
+    
+    @Transactional
+    public List getDonHangNgay(int id_loai, String date_from, String date_to) {
+        return procedureDAO.getDonHangNgay(id_loai, date_from, date_to);
+    }
+    
+    @Transactional
+    public List getDonHangTuanThang(int id_loai, String date_from, String date_to) {
+        return procedureDAO.getDonHangTuanThang(id_loai, date_from, date_to);
+    }
+    
+     @Transactional
+    public List getDonHangNam(int id_loai, String date_from, String date_to) {
+        return procedureDAO.getDonHangNam(id_loai, date_from, date_to);
+    }
+    
 }

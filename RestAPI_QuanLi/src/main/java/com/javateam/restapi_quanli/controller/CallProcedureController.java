@@ -122,4 +122,42 @@ public class CallProcedureController {
         List result = procedureService.getDishesMonth(id_branch, thang, nam);
         return result;
     }
+    
+    
+    /*DonHang*/
+     @RequestMapping(value = "/getDonHangNam", produces = "application/json;charset=UTF-8", method = RequestMethod.POST, headers = "Accept=application/json")
+    public List getDonHangNam(@RequestBody Object data) {
+
+        LinkedHashMap map = (LinkedHashMap) data;
+        String date_from = (String) map.get("date_from");
+        String date_to = (String) map.get("date_to");
+        int id_loai = Integer.parseInt(map.get("id_loai").toString());
+        
+        List result = procedureService.getDonHangNam(id_loai, date_from, date_to);
+        return result;
+    }
+    
+    @RequestMapping(value = "/getDonHangNgay", produces = "application/json;charset=UTF-8", method = RequestMethod.POST, headers = "Accept=application/json")
+    public List getDonHangNgay(@RequestBody Object data) {
+
+        LinkedHashMap map = (LinkedHashMap) data;
+        String date_from = (String) map.get("date_from");
+        String date_to = (String) map.get("date_to");
+        int id_loai = Integer.parseInt(map.get("id_loai").toString());
+        
+        List result = procedureService.getDonHangNgay(id_loai, date_from, date_to);
+        return result;
+    }
+    
+    @RequestMapping(value = "/getDonHangTuanThang", produces = "application/json;charset=UTF-8", method = RequestMethod.POST, headers = "Accept=application/json")
+    public List getDonHangTuanThang(@RequestBody Object data) {
+
+        LinkedHashMap map = (LinkedHashMap) data;
+        String date_from = (String) map.get("date_from");
+        String date_to = (String) map.get("date_to");
+        int id_loai = Integer.parseInt(map.get("id_loai").toString());
+        
+        List result = procedureService.getDonHangTuanThang(id_loai, date_from, date_to);
+        return result;
+    }
 }
